@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.alibaba.arouter'
+
+android {
+    compileSdkVersion rootProject.android.compileSdkVersion
+    buildToolsVersion rootProject.android.buildToolsVersion
+    defaultConfig {
+        applicationId rootProject.android.applicationId
+        minSdkVersion rootProject.android.minSdkVersion
+        targetSdkVersion rootProject.android.targetSdkVersion
+        versionCode rootProject.android.versionCode
+        versionName rootProject.android.versionName
+
+        //ARouter配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled rootProject.android.minifyEnabled
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.depsLibs.appcompat
+    implementation rootProject.depsLibs.constraintlayout
+    implementation rootProject.depsLibs.recyclerview
+
+    //ARouter配置依赖
+    implementation(rootProject.depsLibs.arouterapi) {
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor rootProject.depsLibs.annotationProcessor
+}
