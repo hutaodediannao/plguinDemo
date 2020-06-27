@@ -1,1 +1,1 @@
-include ':app', ':webPrview', ':libimageloader'
+include ':app', ':webPrview', ':libimageloader', ':libbase'

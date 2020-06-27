@@ -39,6 +39,7 @@ dependencies {
     annotationProcessor rootProject.depsLibs.annotationProcessor
     implementation project(path: ':libimageloader')
     implementation project(path: ':webPrview')
+    implementation project(path: ':libbase')
 
     //站位主工程
     implementation rootProject.depsLibs.rxjava
